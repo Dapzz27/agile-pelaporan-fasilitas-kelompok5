@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Pelapor</title>
+</head>
+<body>
+
+<h1>Dashboard Pelapor</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Kategori</th>
+        <th>Lokasi</th>
+        <th>Deskripsi</th>
+        <th>Urgensi</th>
+        <th>Status</th>
+    </tr>
+
+    <% laporan.forEach(item => { %>
+
+    <tr>
+        <td><%= item.id %></td>
+        <td><%= item.kategori %></td>
+        <td><%= item.lokasi %></td>
+        <td><%= item.deskripsi %></td>
+        <td><%= item.urgensi %></td>
+        <td><%= item.status %></td>
+    </tr>
+
+    <% }) %>
+
+</table>
+
+</body>
+</html>

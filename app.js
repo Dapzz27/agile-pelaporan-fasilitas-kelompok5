@@ -43,6 +43,27 @@ app.post('/laporan', (req, res) => {
 
 });
 
+app.get('/dashboard-pelapor', (req, res) => {
+
+    db.all(
+        'SELECT * FROM laporan',
+        [],
+        (err, rows) => {
+
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Error mengambil data');
+            }
+
+            res.render('dashboard-pelapor', {
+                laporan: rows
+            });
+
+        }
+    );
+
+});
+
 app.listen(3000, () => {
     console.log('Server berjalan pada port 3000');
 });
