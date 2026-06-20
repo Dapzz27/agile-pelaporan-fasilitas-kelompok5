@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Pelaporan Kerusakan</title>
+</head>
+<body>
+
+    <h1>Form Pelaporan Kerusakan</h1>
+
+    <form action="/laporan" method="POST">
+
+        <label>Kategori Kerusakan</label><br>
+        <input type="text" name="kategori"><br><br>
+
+        <label>Lokasi</label><br>
+        <input type="text" name="lokasi"><br><br>
+
+        <label>Deskripsi</label><br>
+        <textarea name="deskripsi"></textarea><br><br>
+
+        <label>Tingkat Urgensi</label><br>
+        <select name="urgensi">
+            <option>Rendah</option>
+            <option>Sedang</option>
+            <option>Tinggi</option>
+        </select><br><br>
+
+        <button type="submit">
+            Simpan Laporan
+        </button>
+
+    </form>
+
+</body>
+</html>
