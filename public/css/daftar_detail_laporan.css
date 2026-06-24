@@ -1,0 +1,300 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#1f2937;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ======================
+SIDEBAR
+====================== */
+
+.sidebar{
+    width:220px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    background:linear-gradient(180deg,#0057d8,#0068ff);
+    color:#fff;
+    padding:18px;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.logo-section img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.logo-section h3{
+    font-size:13px;
+    line-height:1.4;
+    font-weight:600;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:white;
+    padding:13px 15px;
+    border-radius:14px;
+    font-size:14px;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.menu-item.active{
+    background:white;
+    color:#0057d8;
+    font-weight:600;
+}
+
+/* ======================
+CONTENT
+====================== */
+
+.content{
+    flex:1;
+    margin-left:220px;
+    padding:20px;
+}
+
+/* ======================
+HEADER
+====================== */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-size:24px;
+    font-weight:700;
+}
+
+.header p{
+    font-size:13px;
+    color:#6b7280;
+    margin-top:5px;
+}
+
+/* ======================
+PROFILE
+====================== */
+
+.profile{
+    position:relative;
+}
+
+.profile-btn{
+    border:none;
+    background:white;
+    border-radius:40px;
+    padding:8px 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.profile-btn img{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+}
+
+.dropdown{
+    position:absolute;
+    top:55px;
+    right:0;
+    width:200px;
+    background:white;
+    border-radius:12px;
+    display:none;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    z-index:999;
+}
+
+.dropdown.show{
+    display:block;
+}
+
+.dropdown a{
+    display:flex;
+    gap:10px;
+    padding:12px 15px;
+    text-decoration:none;
+    color:#374151;
+}
+
+.dropdown a:hover{
+    background:#f3f4f6;
+}
+
+/* ======================
+FILTER
+====================== */
+
+.filter-card{
+    background:white;
+    padding:16px;
+    border-radius:16px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+
+.filter-card input,
+.filter-card select{
+    height:42px;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:0 14px;
+    font-size:13px;
+}
+
+.filter-card input{
+    width:280px;
+}
+
+.filter-btn{
+    border:none;
+    background:#0057d8;
+    color:white;
+    padding:0 18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* ======================
+TABLE
+====================== */
+
+.table-card{
+    background:white;
+    padding:18px;
+    border-radius:16px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#f8fafc;
+}
+
+th{
+    font-size:13px;
+    font-weight:600;
+}
+
+th,
+td{
+    padding:14px;
+    border-bottom:1px solid #edf0f5;
+    font-size:13px;
+    text-align:left;
+}
+
+.status{
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+}
+
+.report{
+    background:#fff2cf;
+    color:#d97706;
+}
+
+.process{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.done{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.view-btn{
+    border:none;
+    background:#0057d8;
+    color:white;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.view-btn:hover{
+    background:#0047b3;
+}
+
+/* ======================
+RESPONSIVE
+====================== */
+
+@media(max-width:768px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .content{
+        margin-left:0;
+        padding:15px;
+    }
+
+    .header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .filter-card{
+        flex-direction:column;
+    }
+
+    .filter-card input{
+        width:100%;
+    }
+}

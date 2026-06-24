@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <img src="/images/Logo_UnivLampung.png" alt="Logo">
+            <div>
+                <h3>Sistem Pelaporan</h3>
+                <h3>Fasilitas Kampus</h3>
+            </div>
+        </div>
+
+       <nav class="menu">
+
+    <a href="/dashboard" class="menu-item active">
+        <i class="fas fa-home"></i>
+        Dashboard
+    </a>
+
+    <a href="/laporan-masuk" class="menu-item">
+        <i class="fas fa-inbox"></i>
+        Laporan Masuk
+    </a>
+
+    <a href="/daftar-detail-laporan" class="menu-item">
+        <i class="fas fa-file-alt"></i>
+        Daftar & Detail Laporan
+    </a>
+
+    <a href="/pengguna" class="menu-item">
+        <i class="fas fa-users"></i>
+        Pengguna
+    </a>
+
+</nav>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+                <h1>Hallo, Admin Prasarana</h1>
+                <p>Kelola dan proses laporan kerusakan fasilitas kampus.</p>
+            </div>
+
+            <div class="profile">
+
+                <button class="profile-btn" id="profileBtn">
+
+                    <img src="https://ui-avatars.com/api/?name=Admin" alt="">
+
+                    <span>Admin Prasarana</span>
+
+                    <i class="fas fa-chevron-down"></i>
+
+                </button>
+
+                <div class="dropdown" id="dropdownMenu">
+
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        Profil Saya
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-user-edit"></i>
+                        Edit Profil
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- CARD -->
+        <section class="cards">
+
+<div class="card">
+    <div class="icon orange">
+        <i class="fas fa-file-alt"></i>
+    </div>
+
+    <div class="card-content">
+        <h4>Dilaporkan</h4>
+        <h2>12</h2>
+        <span>Laporan baru</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="icon blue">
+        <i class="fas fa-cog"></i>
+    </div>
+
+    <div class="card-content">
+        <h4>Diproses</h4>
+        <h2>8</h2>
+        <span>Sedang dikerjakan</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="icon green">
+        <i class="fas fa-check"></i>
+    </div>
+
+    <div class="card-content">
+        <h4>Selesai</h4>
+        <h2>25</h2>
+        <span>Sudah diselesaikan</span>
+    </div>
+</div>
+
+</section>
+
+
+        <!-- TABLE -->
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <h2>Laporan Masuk Terbaru</h2>
+
+                <button class="btn">
+                    Lihat Semua
+                </button>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID Laporan</th>
+                            <th>Pelapor</th>
+                            <th>Lokasi</th>
+                            <th>Kategori</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>#LP-2024-0128</td>
+                            <td>Budi Santoso</td>
+                            <td>Gedung A - Ruang 201</td>
+                            <td>AC / Pendingin</td>
+                            <td>20 Mei 2024</td>
+
+                            <td>
+                                <span class="status report">
+                                    Dilaporkan
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="eye">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>#LP-2024-0127</td>
+                            <td>Siti Aisyah</td>
+                            <td>Gedung B</td>
+                            <td>Lampu</td>
+                            <td>20 Mei 2024</td>
+
+                            <td>
+                                <span class="status process">
+                                    Diproses
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="eye">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>#LP-2024-0126</td>
+                            <td>Andi Pratama</td>
+                            <td>Gedung C</td>
+                            <td>Toilet</td>
+                            <td>19 Mei 2024</td>
+
+                            <td>
+                                <span class="status done">
+                                    Selesai
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="eye">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- FOOTER INFO -->
+        <section class="bottom-cards">
+
+            <div class="info-card">
+                <i class="fas fa-clipboard-list"></i>
+
+                <div>
+                    <h4>Catatan</h4>
+                    <p>Segera proses laporan yang masuk.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-bell"></i>
+
+                <div>
+                    <h4>Notifikasi</h4>
+                    <p>12 laporan baru belum diproses.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-calendar"></i>
+
+                <div>
+                    <h4>Tanggal</h4>
+                    <p>20 Mei 2024</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="/js/dashboard.js"></script>
+
+</body>
+</html>

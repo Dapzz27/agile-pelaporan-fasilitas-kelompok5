@@ -12,6 +12,25 @@ const db = new sqlite3.Database('./database.db', (err) => {
     else console.log('Terhubung ke database SQLite.');
 });
 
+
+app.get('/dashboard', (req, res) => {
+    res.sendFile(
+        path.join(__dirname,
+        'views/admin/dashboard.html')
+    );
+});
+
+app.get('/daftar-detail-laporan', (req, res) => {
+    res.sendFile(
+        path.join(
+            __dirname,
+            'views',
+            'admin',
+            'daftar_detail_laporan.html'
+        )
+    );
+});
+
 // Create Table Laporan jika belum ada
 db.run(`CREATE TABLE IF NOT EXISTS laporan (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
