@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar & Detail Laporan</title>
+
+    <link rel="stylesheet" href="/css/daftar_detail_laporan.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <img src="/images/Logo_UnivLampung.png" alt="">
+            <div>
+                <h3>Sistem Pelaporan</h3>
+                <h3>Fasilitas Kampus</h3>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="/dashboard" class="menu-item">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fas fa-inbox"></i>
+                Laporan Masuk
+            </a>
+
+            <a href="/daftar-detail-laporan"
+               class="menu-item active">
+                <i class="fas fa-file-alt"></i>
+                Daftar & Detail Laporan
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fas fa-users"></i>
+                Pengguna
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+        <header class="header">
+
+            <div>
+                <h1>Daftar Laporan</h1>
+                <p>
+                    Kelola dan lihat seluruh laporan kerusakan fasilitas kampus.
+                </p>
+            </div>
+
+            <div class="profile">
+
+                <button class="profile-btn" id="profileBtn">
+
+                    <img src="https://ui-avatars.com/api/?name=Admin"
+                         alt="">
+
+                    <span>Admin Prasarana</span>
+
+                    <i class="fas fa-chevron-down"></i>
+
+                </button>
+
+                <div class="dropdown" id="dropdownMenu">
+
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        Profil Saya
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-user-edit"></i>
+                        Edit Profil
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- FILTER -->
+        <section class="filter-card">
+
+            <input
+                type="text"
+                placeholder="Cari laporan..."
+                id="searchInput">
+
+            <select>
+                <option>Semua Status</option>
+                <option>Dilaporkan</option>
+                <option>Diproses</option>
+                <option>Selesai</option>
+            </select>
+
+            <select>
+                <option>Semua Kategori</option>
+                <option>AC / Pendingin</option>
+                <option>Lampu</option>
+                <option>Toilet</option>
+            </select>
+
+            <button class="filter-btn">
+                <i class="fas fa-filter"></i>
+                Filter
+            </button>
+
+        </section>
+
+        <!-- TABLE -->
+        <section class="table-card">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID Laporan</th>
+                        <th>Pelapor</th>
+                        <th>Lokasi</th>
+                        <th>Kategori</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody">
+
+                    <tr>
+                        <td>#LP-2024-0128</td>
+                        <td>Budi Santoso</td>
+                        <td>Gedung A - Ruang 201</td>
+                        <td>AC / Pendingin</td>
+                        <td>20 Mei 2024</td>
+
+                        <td>
+                            <span class="status report">
+                                Dilaporkan
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                Lihat
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>#LP-2024-0127</td>
+                        <td>Siti Aisyah</td>
+                        <td>Gedung B</td>
+                        <td>Lampu</td>
+                        <td>20 Mei 2024</td>
+
+                        <td>
+                            <span class="status process">
+                                Diproses
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                Lihat
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>#LP-2024-0126</td>
+                        <td>Andi Pratama</td>
+                        <td>Gedung C</td>
+                        <td>Toilet</td>
+                        <td>19 Mei 2024</td>
+
+                        <td>
+                            <span class="status done">
+                                Selesai
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                Lihat
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="/js/daftar_detail_laporan.js"></script>
+
+</body>
+</html>
