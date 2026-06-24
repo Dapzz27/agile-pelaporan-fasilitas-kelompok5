@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pelapor - Pengaduan Fasilitas</title>
+    <link rel="stylesheet" href="/css/dashboard-pelapor.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <header class="topbar">
+            <div class="brand">
+                <img src="/images/Logo_UnivLampung.png" alt="Logo Unila" class="logo-unila">
+                <h2>Sistem Pelaporan Fasilitas Kampus</h2>
+            </div>
+            <div class="user-profile">
+                <span class="user-name">Pelapor Kampus</span>
+                <a href="/login" class="btn-logout">Keluar</a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1>Dashboard Pelapor</h1>
+                    <p class="subtitle">Pantau dan laporkan kerusakan fasilitas kampus Anda.</p>
+                </div>
+                <a href="/form-pelaporan" class="btn-primary">Buat Laporan Baru</a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon yellow">📋</div>
+                    <div class="stat-info">
+                        <h3>Total Laporan</h3>
+                        <p id="total-laporan-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">⚙️</div>
+                    <div class="stat-info">
+                        <h3>Sedang Diproses</h3>
+                        <p id="diproses-count">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2>Riwayat Pelaporan</h2>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Laporan</th>
+                                <th>Foto Bukti</th>
+                                <th>Kategori</th>
+                                <th>Lokasi Fasilitas</th>
+                                <th>Deskripsi</th> <th>Status Progres</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-laporan-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgModalTarget">
+        <div id="modal-caption"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tbody = document.getElementById('table-laporan-body');
+            const totalCountEl = document.getElementById('total-laporan-count');
+            const diprosesCountEl = document.getElementById('diproses-count');
+
+            // Ambil data asli dari database SQLite lewat API backend
+            fetch('/api/laporan')
+                .then(response => response.json())
+                .then(data => {
+                    totalCountEl.innerText = data.length;
+                    
+                    let countDiproses = 0;
+                    tbody.innerHTML = ''; // bersihkan tabel
+
+                    if(data.length === 0) {
+                        // Perbaikan: Colspan dinaikkan menjadi 6 agar sesuai jumlah kolom baru
+                        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#64748b; padding:30px;">Belum ada laporan masuk.</td></tr>`;
+                        return;
+                    }
+
+                    data.forEach(laporan => {
+                        if(laporan.status === 'Diproses') countDiproses++;
+
+                        // Cek apakah ada file foto, jika tidak tampilkan ikon default
+                        const fotoHTML = laporan.foto 
+                            ? `<img src="/uploads/${laporan.foto}" class="table-thumbnail" alt="${laporan.kategori}" onclick="viewImage('/uploads/${laporan.foto}', '${laporan.kategori}')">`
+                            : `<div class="img-placeholder">📁</div>`;
+
+                        const badgeClass = laporan.status === 'Diproses' ? 'badge-diproses' : 'badge-dilaporkan';
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td class="fw-bold">#00${laporan.id}</td>
+                            <td>${fotoHTML}</td>
+                            <td>${laporan.kategori}</td>
+                            <td>${laporan.lokasi}</td>
+                            <td class="text-muted text-truncate-deskripsi">${laporan.deskripsi || '-'}</td> <td><span class="badge ${badgeClass}">${laporan.status}</span></td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+
+                    diprosesCountEl.innerText = countDiproses;
+                });
+        });
+
+        // Fungsi untuk mengaktifkan pop-up gambar klik besar
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("imgModalTarget");
+        const captionText = document.getElementById("modal-caption");
+
+        function viewImage(imgSrc, caption) {
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+            captionText.innerHTML = caption;
+        }
+
+        document.querySelector('.close-modal').onclick = function() {
+            modal.style.display = "none";
+        }
+        modal.onclick = function(e) {
+            if(e.target === modal) modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
